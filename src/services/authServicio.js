@@ -5,11 +5,11 @@ const  tokens = require('../utils/jwt.js');
 
 async function RegistrarUsuarioAuth(peticion){
     const datos = await Funciones.recolectarDatos(peticion);
-    const {correo, nombre, contraseña, documento} = datos;
+    const {correo, nombre, contrasena, documento} = datos;
     const query = 'SELECT * FROM registro WHERE correo = $1 AND documento = $2';
-    const query2 = 'INSERT INTO registro (correo, nombre, contraseña, documento) values ($1, $2, $3, $4)';
-    const contraseñaHash = await bcrypt.hash(contraseña, 10);
-    const values = [correo, nombre, contraseñaHash, documento];
+    const query2 = 'INSERT INTO registro (correo, nombre, contrasena, documento) values ($1, $2, $3, $4)';
+    const contrasenaHash = await bcrypt.hash(contrasena, 10);
+    const values = [correo, nombre, contrasenaHash, documento];
     
     existenDatos = await pool.query(query, [correo, documento]);
     if(existenDatos.rows.length > 0){
@@ -29,11 +29,11 @@ async function RegistrarUsuarioAuth(peticion){
 
 async function loginAuth(peticion){
     const datos = await Funciones.recolectarDatos(peticion);
-    const {correo, contraseña} = datos;
+    const {correo, contrasena} = datos;
     const query = 'SELECT * FROM registro WHERE correo=$1';
     const existe = await pool.query(query,[correo]);
 
-    if(!correo || !contraseña){
+    if(!correo || !contrasena){
         return{
             mensaje: 'Faltan Campos Obligatorios'
         }
@@ -46,9 +46,9 @@ async function loginAuth(peticion){
         }
     }
     const usuario = existe.rows[0];
-    const coincide = await bcrypt.compare(contraseña, usuario.contraseña);
+    const coincide = await bcrypt.compare(contrasena, usuario.contrasena);
     if(!coincide){
-        return{mensaje: 'Contraseña incorrecta'}
+        return{mensaje: 'Contrasena incorrecta'}
     }
 
     const payload = {
