@@ -1,7 +1,7 @@
 const pool = require('../config/db.js');
 const Funciones = require('../utils/FuncionesApoyo.js');
 const bcrypt = require('bcryptjs');
-const  GenerarToken = require('../utils/jwt.js');
+const  tokens = require('../utils/jwt.js');
 
 async function RegistrarUsuarioAuth(peticion){
     const datos = await Funciones.recolectarDatos(peticion);
@@ -32,7 +32,7 @@ async function loginAuth(peticion){
     const {correo, contraseña} = datos;
     const query = 'SELECT * FROM registro WHERE correo=$1';
     const existe = await pool.query(query,[correo]);
-    
+
     if(!correo || !contraseña){
         return{
             mensaje: 'Faltan Campos Obligatorios'
@@ -56,7 +56,7 @@ async function loginAuth(peticion){
         correo: usuario.correo
     }
 
-    const token = GenerarToken(payload);
+    const token = tokens.crearToken(payload);
     
     return{
         mensaje: 'Sesion Iniciada',
@@ -69,7 +69,22 @@ async function loginAuth(peticion){
     
 }
 
+
+async function verificarToken(peticion){
+    const datos = await Funciones.recolectarDatos(peticion)
+    const {token} = datos;
+    try {
+        return await tokens.verificarToken(token);
+    } catch (error) {
+        return {
+            mensaje: "Token invalido o expirado"
+        }
+    }
+}
+
+
 module.exports = {
     RegistrarUsuarioAuth,
-    loginAuth
+    loginAuth,
+    verificarToken
 }

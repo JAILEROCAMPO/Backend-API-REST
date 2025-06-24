@@ -1,11 +1,19 @@
 const servicios = require('../services/ServicioUsuarios.js');
 
 async function usuariosEndPoints(peticion, respuesta){
+    const {url, method} = peticion;
+    const mensaje = {mensaje: 'No se encontro la ruta url en Usuarios'};
+    
     respuesta.setHeader('Content-Type', 'application/json');
     respuesta.setHeader('Access-Control-Allow-Origin', '*');
     respuesta.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-    const {url, method} = peticion;
-    const mensaje = {mensaje: 'No se encontro la ruta url en Usuarios'};
+    if(method === 'OPTIONS'){
+        respuesta.statusCode = 200;
+        respuesta.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+        respuesta.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+        respuesta.end(JSON.stringify({mensaje: 'Permitido'}));
+        return;
+    }
     
 
     if( method === 'GET'){
