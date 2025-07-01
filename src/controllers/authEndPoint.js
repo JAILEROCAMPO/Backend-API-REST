@@ -5,22 +5,17 @@ async function authEndPoint(peticion, respuesta){
     const mensaje = {mensaje: 'No se encontro la ruta url'};
     respuesta.setHeader('Content-Type', 'application/json');
     respuesta.setHeader('Access-Control-Allow-Origin', '*');
-    respuesta.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+    respuesta.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
     if(method === 'OPTIONS'){
         respuesta.statusCode = 200;
-        respuesta.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+        respuesta.setHeader('Access-Control-Allow-Methods', 'GET, POST');
         respuesta.setHeader('Access-Control-Allow-Headers', 'Content-Type');
         respuesta.end(JSON.stringify({mensaje: 'Permitido'}));
         return;
     }
     
-    console.log('Método:', method, 'URL:', url);
 
     if(method === 'POST'){
-        console.log('url raw:', url);
-        console.log(`URL raw: '${url}' (length: ${url.length})`);
-
-
         switch(url){
             case('/auth/Registro'):
                 try {

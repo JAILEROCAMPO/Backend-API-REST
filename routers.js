@@ -1,5 +1,6 @@
 const authController = require('./src/controllers/authEndPoint.js');
 const usuarioController = require('./src/controllers/usuariosEndPoints');
+const chatController = require('./src/controllers/ChatEndPoint.js');
 const modificarDB = require('./src/utils/modificarbd.js')
 
 async function rutas(peticion, respuesta){
@@ -12,6 +13,10 @@ async function rutas(peticion, respuesta){
     }else if (url.startsWith('/usuarios')){
 
         await usuarioController(peticion, respuesta);
+    }else if (url.startsWith('/chat')){
+
+
+        await chatController(peticion, respuesta);
     }else{
         modificarDB.creartablas();
         respuesta.statusCode = 404;

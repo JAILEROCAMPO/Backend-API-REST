@@ -42,6 +42,12 @@ async function borrarUsuario(peticion){
 }
 
 
+async function obtenerUsuariosLogueados(peticion) {
+    const resultado = await pool.query('SELECT * FROM registro');
+    return resultado.rows
+}
+
+
 
 
 
@@ -49,5 +55,6 @@ module.exports = {
     obtenerUsuarios,
     registrarUsuario,
     actualizarUsuario,
-    borrarUsuario
+    borrarUsuario,
+    obtenerUsuariosLogueados
 }

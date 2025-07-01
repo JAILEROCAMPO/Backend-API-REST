@@ -30,14 +30,22 @@ async function usuariosEndPoints(peticion, respuesta){
                     console.error(error);
                 }
                 break;
+            case('/usuarios/obtener'):
+            try {
+                const usuarios = await servicios.obtenerUsuariosLogueados();
+                respuesta.statusCode = 200;
+                respuesta.end(JSON.stringify({usuarios}));
+            } catch (error) {
+                respuesta.statusCode = 200;
+                respuesta.end(JSON.stringify({mensaje: 'No se puedo consultar la base de datos'}))
+            }
             default:
                 respuesta.statusCode = 404;
-                respuesta.end(JSON.stringify(mensaje))
+                respuesta.end(JSON.stringify(mensaje));
                 break;
         }
 
     }else if( method === 'POST'){
-
         switch(url){
             case('/usuarios/registrarUsuario'):
             try {
