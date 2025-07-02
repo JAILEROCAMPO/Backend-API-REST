@@ -19,7 +19,7 @@ async function participantesChat(peticion) {
     const datos = await Funciones.recolectarDatos(peticion);
     const {chatID, usuarioId} = datos;
     const query = 'INSERT INTO participantes (chatId, usuarioId) VALUES ($1, $2)';
-    const values = [chatID, usuarioId];
+    const values = [chatID, usuarioid];
     await pool.query(query, values);
     
     return{
@@ -33,7 +33,6 @@ async function obtenerMensajes(peticion){
     const query = 'SELECT * FROM mensajes WHERE chatId = $1';
     const values = [chatId];
     const mensajes = await pool.query(query, values);
-    console.log(mensajes.rows);
 
     return mensajes.rows;
 }

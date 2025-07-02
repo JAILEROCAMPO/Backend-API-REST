@@ -20,11 +20,10 @@ module.exports = function (wss, WebSocket) {
         }
 
         if (datos.tipo === 'mensaje') {
-          console.log('vamos a ver',datos)
-          const { chatId, remitenteId, contenido, formato } = datos;
+          const { chatId, remitenteid, contenido, formato } = datos;
           const validacion = await pool.query(
             'SELECT * FROM participantes WHERE chatID = $1 AND usuarioId = $2',
-            [chatId, remitenteId]
+            [chatId, remitenteid]
           );
           
 
@@ -34,15 +33,14 @@ module.exports = function (wss, WebSocket) {
           }
 
           await pool.query(
-            'INSERT INTO mensajes (chatId, remitenteId, contenido, tipo, leido) VALUES ($1, $2, $3, $4, $5)',
-            [chatId, remitenteId, contenido, formato, false]
+            'INSERT INTO mensajes (chatId, remitenteid, contenido, tipo, leido) VALUES ($1, $2, $3, $4, $5)',
+            [chatId, remitenteid, contenido, formato, false]
           );
 
           const participantes = await pool.query(
             'SELECT usuarioId FROM participantes WHERE chatID = $1 AND usuarioId != $2',
-            [chatId, remitenteId]
+            [chatId, remitenteid]
           );
-          console.log('participantes',participantes)
 
           for (const fila of participantes.rows) {
             const socketDestino = conexiones.get(fila.usuarioid);
@@ -52,7 +50,7 @@ module.exports = function (wss, WebSocket) {
                 JSON.stringify({
                   tipo: 'mensaje',
                   chatId,
-                  remitenteId,
+                  remitenteid,
                   contenido,
                   tipoContenido: formato,
                   enviadoEn: new Date(),
@@ -62,8 +60,7 @@ module.exports = function (wss, WebSocket) {
           }
         }
       } catch (error) {
-        console.error('Error procesando mensaje:', error.message);
-        console.error('Error procesando mensaje:', error);
+        console.error('Error procesando mensaje:', error.message); 
 
       }
     });
