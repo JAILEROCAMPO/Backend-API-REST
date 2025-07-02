@@ -39,6 +39,7 @@ async function usuariosEndPoints(peticion, respuesta){
                 respuesta.statusCode = 200;
                 respuesta.end(JSON.stringify({mensaje: 'No se puedo consultar la base de datos'}))
             }
+            break;
             default:
                 respuesta.statusCode = 404;
                 respuesta.end(JSON.stringify(mensaje));

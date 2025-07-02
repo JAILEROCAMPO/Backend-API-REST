@@ -63,7 +63,8 @@ async function loginAuth(peticion){
         token: token,
         usuario: {
             nombre: usuario.nombre,
-            correo: usuario.correo
+            correo: usuario.correo,
+            id: usuario.id
         }
     };
     
