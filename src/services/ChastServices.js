@@ -27,6 +27,17 @@ async function participantesChat(peticion) {
     }
 };
 
+async function obtenerMensajes(peticion){
+    const datos = await Funciones.recolectarDatos(peticion)
+    const {chatId} = datos;
+    const query = 'SELECT * FROM mensajes WHERE chatId = $1';
+    const values = [chatId];
+    const mensajes = await pool.query(query, values);
+    console.log(mensajes.rows);
+
+    return mensajes.rows;
+}
+
 async function obtenerInfo(peticion) {
 
     // Ejecutar todas las consultas en paralelo
@@ -51,5 +62,6 @@ async function obtenerInfo(peticion) {
 module.exports = {
     crearChat,
     participantesChat,
-    obtenerInfo
+    obtenerInfo,
+    obtenerMensajes
 };

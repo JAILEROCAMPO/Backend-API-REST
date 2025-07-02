@@ -38,6 +38,17 @@ async function chats(peticion, respuesta){
                     respuesta.end(JSON.stringify({mensaje: 'Error al hacer la consulta en la base de datos'}));
                 }
             break;
+            case('/chat/mensajes'):
+                try {
+                    const resultado = await servcicio.obtenerMensajes(peticion);
+                    respuesta.statusCode = 200;
+                    respuesta.end(JSON.stringify(resultado));
+                } catch (error) {
+                    console.log(error)
+                    .statusCode = 500;
+                    respuesta.end(JSON.stringify({mensaje: 'Error al hacer la consulta en la base de datos'}));
+                }
+            break;
             default:
                 respuesta.statusCode = 404;
                 respuesta.end(JSON.stringify({mensaje: 'No se encontro la ruta en Chats'}));
@@ -46,15 +57,15 @@ async function chats(peticion, respuesta){
     }else if(method === 'GET'){
         switch(url){
             case('/chat/obtenerinfo'):
-            try {
-                const resultado = await servcicio.obtenerInfo(peticion);
-                respuesta.statusCode = 200;
-                respuesta.end(JSON.stringify(resultado));
-            } catch (error) {
-                console.log(error)
-                respuesta.statusCode = 500;
-                respuesta.end(JSON.stringify({mensaje: 'Error al hacer la consulta en la base de datos'}));
-            }
+                try {
+                    const resultado = await servcicio.obtenerInfo(peticion);
+                    respuesta.statusCode = 200;
+                    respuesta.end(JSON.stringify(resultado));
+                } catch (error) {
+                    console.log(error)
+                    respuesta.statusCode = 500;
+                    respuesta.end(JSON.stringify({mensaje: 'Error al hacer la consulta en la base de datos'}));
+                }
             break;
             default:
                 respuesta.statusCode = 404;
