@@ -18,22 +18,12 @@ async function chats(peticion, respuesta){
         switch(url){
             case('/chat/iniciarChat'):
                 try {
-                    const resultado = await servcicio.crearChat(peticion);
+                    console.log('entra a endpoint');
+                    const resultado = await servcicio.verificarSiHayChat(peticion);
                     respuesta.statusCode = 200;
                     respuesta.end(JSON.stringify(resultado));
                 } catch (error) {
                     console.log(error);
-                    respuesta.statusCode = 500;
-                    respuesta.end(JSON.stringify({mensaje: 'Error al hacer la consulta en la base de datos'}));
-                }
-            break;
-            case('/chat/participante'):
-                try {
-                    const resultado = await servcicio.participantesChat(peticion);
-                    respuesta.statusCode = 200;
-                    respuesta.end(JSON.stringify(resultado))
-                } catch (error) {
-                    console.log(error)
                     respuesta.statusCode = 500;
                     respuesta.end(JSON.stringify({mensaje: 'Error al hacer la consulta en la base de datos'}));
                 }

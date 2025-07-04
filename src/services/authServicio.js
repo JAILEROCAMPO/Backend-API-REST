@@ -53,6 +53,7 @@ async function loginAuth(peticion){
 
     const payload = {
         id: usuario.id,
+        usuario: usuario.nombre,
         correo: usuario.correo
     }
 

@@ -2,34 +2,53 @@ const pool = require('../config/db.js');
 const Funciones = require('../utils/FuncionesApoyo.js');
 
 
-
-async function crearChat(peticion) {
+async function verificarSiHayChat(peticion) {
     const datos = await Funciones.recolectarDatos(peticion);
+    console.log(datos);
+    const {usuarioid1, usuarioid2} = datos;
+    const query = 'SELECT chatID FROM participantes WHERE usuarioId IN ($1, $2)GROUP BY chatID HAVING COUNT(DISTINCT usuarioId) = 2';
+    const values = [usuarioid1, usuarioid2]; 
+    const respuesta = await pool.query(query, values);
+    console.log('verificar si hay chat services', respuesta.rows[0])
+
+    if(respuesta.rows.length > 0){
+        const chatId = respuesta.rows[0].chatid;
+        console.log('entra a la condicional o no');
+        return await obtenerMensajes(chatId);
+        
+    }else{
+        console.log('entra a la condicional else o no');
+        const Idchat = await crearChat(datos);
+        console.log('id chat', Idchat);
+        return Idchat;
+    }
+}
+
+async function crearChat(datos) {
+    console.log('entra a crear chat');
     const {nombreChat, esGrupal, creadoPor} = datos;
-    const query = 'INSERT INTO chats (nombreChat, esGrupal, creadoPor) VALUES ($1, $2, $3)';
+    const query = 'INSERT INTO chats (nombreChat, esGrupal, creadoPor) VALUES ($1, $2, $3) RETURNING idChat';
     const values = [nombreChat, esGrupal, creadoPor];
-    await pool.query(query, values);
-    return {
-        mensaje: 'chat incializado'
-    }
-};
-
-
-async function participantesChat(peticion) {
-    const datos = await Funciones.recolectarDatos(peticion);
-    const {chatID, usuarioId} = datos;
-    const query = 'INSERT INTO participantes (chatId, usuarioId) VALUES ($1, $2)';
-    const values = [chatID, usuarioid];
-    await pool.query(query, values);
+    const resultado = await pool.query(query, values);
+    const idChat = resultado.rows[0].idchat;
+    console.log('entras a crearchat', idChat);   
+    return await participantesChat(datos, idChat);
     
-    return{
-        mensaje: 'participante añadido'
-    }
+}; 
+
+async function participantesChat(datos, chatID) {
+    const {usuarioid1, usuarioid2} = datos;
+    const query = 'INSERT INTO participantes (chatId, usuarioId) VALUES ($1, $2),($3,$4)';
+    const values = [chatID, usuarioid1, chatID, usuarioid2];
+    await pool.query(query, values);
+    console.log('entra a añadir participantes')
+    
+    return [
+        {bienvenida: 'Tu aventura acaba de comenzar'}
+    ]
 };
 
-async function obtenerMensajes(peticion){
-    const datos = await Funciones.recolectarDatos(peticion)
-    const {chatId} = datos;
+async function obtenerMensajes(chatId){
     const query = 'SELECT * FROM mensajes WHERE chatId = $1';
     const values = [chatId];
     const mensajes = await pool.query(query, values);
@@ -59,8 +78,7 @@ async function obtenerInfo(peticion) {
 }
 
 module.exports = {
-    crearChat,
-    participantesChat,
+    verificarSiHayChat,
     obtenerInfo,
     obtenerMensajes
 };
