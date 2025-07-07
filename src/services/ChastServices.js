@@ -53,7 +53,10 @@ async function obtenerMensajes(chatId){
     const values = [chatId];
     const mensajes = await pool.query(query, values);
 
-    return mensajes.rows;
+    return {
+        mensajes: mensajes.rows,
+        idchat: chatId
+    }
 }
 
 async function obtenerInfo(peticion) {
@@ -80,5 +83,6 @@ async function obtenerInfo(peticion) {
 module.exports = {
     verificarSiHayChat,
     obtenerInfo,
-    obtenerMensajes
+    obtenerMensajes,
+    crearChat
 };
