@@ -1,4 +1,5 @@
 const pool = require('../config/db');
+const servicio = require('../services/ChastServices.js');
 
 const conexiones = new Map();
 
@@ -23,8 +24,7 @@ module.exports = function (wss, WebSocket) {
           const { chatId, remitenteid, contenido, formato } = datos;
           const validacion = await pool.query(
             'SELECT * FROM participantes WHERE chatID = $1 AND usuarioId = $2',
-            [chatId, remitenteid]
-          );
+            [chatId, remitenteid]          );
           
 
           if (validacion.rowCount === 0) {

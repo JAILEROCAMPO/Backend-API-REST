@@ -35,18 +35,40 @@ async function crearChat(datos) {
     return await participantesChat(datos, idChat);
     
 }; 
-
 async function participantesChat(datos, chatID) {
-    const {usuarioid1, usuarioid2} = datos;
-    const query = 'INSERT INTO participantes (chatId, usuarioId) VALUES ($1, $2),($3,$4)';
-    const values = [chatID, usuarioid1, chatID, usuarioid2];
+    let usuarios = [];
+
+    if (datos.usuarioid1 && datos.usuarioid2) {
+        usuarios = [datos.usuarioid1, datos.usuarioid2];
+    }
+
+
+    if (Array.isArray(datos.usuariosGrupo)) {
+        usuarios = datos.usuariosGrupo;
+    }
+
+    if (usuarios.length === 0) {
+        throw new Error('No hay usuarios para insertar en participantes');
+    }
+
+    const values = [];
+    const placeholders = [];
+
+    usuarios.forEach((usuarioId, index) => {
+        values.push(chatID, usuarioId);
+        placeholders.push(`($${index * 2 + 1}, $${index * 2 + 2})`);
+    });
+
+    const query = `INSERT INTO participantes (chatId, usuarioId) VALUES ${placeholders.join(', ')}`;
     await pool.query(query, values);
-    console.log('entra a añadir participantes')
-    
+
+    console.log(`Participantes insertados en chat ${chatID}:`, usuarios);
+
     return [
-        {bienvenida: 'Tu aventura acaba de comenzar'}
-    ]
-};
+        { bienvenida: 'Tu aventura acaba de comenzar', chatID }
+    ];
+}
+
 
 async function obtenerMensajes(chatId){
     const query = 'SELECT * FROM mensajes WHERE chatId = $1';
