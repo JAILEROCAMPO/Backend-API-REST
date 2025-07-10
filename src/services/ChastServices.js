@@ -81,6 +81,14 @@ async function obtenerMensajes(chatId){
     }
 }
 
+async function obtenergrupos(peticion) {
+    const query = 'SELECT * FROM chats WHERE esGrupal = true;'
+    const grupos = await pool.query(query);
+
+    return grupos.rows;
+    
+}
+
 async function obtenerInfo(peticion) {
 
     // Ejecutar todas las consultas en paralelo
@@ -106,5 +114,6 @@ module.exports = {
     verificarSiHayChat,
     obtenerInfo,
     obtenerMensajes,
-    crearChat
+    crearChat,
+    obtenergrupos
 };

@@ -1,0 +1,250 @@
+{
+    "DATOS": [
+        {
+            "IDENTIFICACION_CONTRATO": "1111334112",
+            "TERCERO": "1111334112",
+            "NOMBRE_TERCERO": "Jailer Antonio Ocampo",
+            "FCH_CONTRATO": "28-10-2025",
+            "AREA": "TI",
+            "NOMBRE_AREA": "Dev Software",
+            "CENTRO_COSTO": "1223",
+            "NOMBRE_CENTRO_COSTO": "ERP",
+            "CARGO_ACTUAL": "Desarrollador Junior",
+            "SALARIO_ACTUAL": 1423500,
+            "HISTORICO": [
+                {
+                    "FCH_INICIO": "28-04-2025",
+                    "FCH_FIN": "28-10-2025",
+                    "CARGO": "Aprendiz",
+                    "MOTIVO_CAMBIO": "Ingreso aprendiz Sena",
+                    "TIPO_CAMBIO": "Inicio contrato",
+                    "MODIFICADO_POR": "RH@tecinf.com",
+                    "FCH_REGISTRO": "28-04-2025",
+                    "SALARIO": 1070000
+                },
+                {
+                    "FCH_INICIO": "28-10-2025",
+                    "FCH_FIN": "28-10-2026",
+                    "CARGO": "Dev JR",
+                    "MOTIVO_CAMBIO": "Renovación de contrato",
+                    "TIPO_CAMBIO": "Renovación",
+                    "MODIFICADO_POR": "RH@tecinf.com",
+                    "FCH_REGISTRO": "28-10-2025",
+                    "SALARIO": 1423500
+                }
+            ]
+        },
+        {
+            "IDENTIFICACION_CONTRATO": "2221324242",
+            "TERCERO": "2221324242",
+            "NOMBRE_TERCERO": "Jhon Gomez",
+            "FCH_CONTRATO": "30-07-2023",
+            "AREA": "TI",
+            "NOMBRE_AREA": "Desarrollo soft",
+            "CENTRO_COSTO": "1223",
+            "NOMBRE_CENTRO_COSTO": "ERP",
+            "CARGO_ACTUAL": "Desarrollador SR",
+            "SALARIO_ACTUAL": 3000000,
+            "HISTORICO": [
+                {
+                    "FCH_INICIO": "20-12-2019",
+                    "FCH_FIN": "13-02-2021",
+                    "CARGO": "Dev JR",
+                    "MOTIVO_CAMBIO": "Inicio de contrato",
+                    "TIPO_CAMBIO": "Ingreso",
+                    "MODIFICADO_POR": "RH@tecinf.com",
+                    "FCH_REGISTRO": "20-12-2019",
+                    "SALARIO": 1500000
+                },
+                {
+                    "FCH_INICIO": "13-02-2021",
+                    "FCH_FIN": "30-07-2023",
+                    "CARGO": "Dev Semi",
+                    "MOTIVO_CAMBIO": "Ascenso",
+                    "TIPO_CAMBIO": "Ascenso",
+                    "MODIFICADO_POR": "RH@tecinf.com",
+                    "FCH_REGISTRO": "13-02-2021",
+                    "SALARIO": 2500000
+                },
+                {
+                    "FCH_INICIO": "30-07-2023",
+                    "FCH_FIN": "Vigente",
+                    "CARGO": "Dev SR",
+                    "MOTIVO_CAMBIO": "Ascenso",
+                    "TIPO_CAMBIO": "Ascenso",
+                    "MODIFICADO_POR": "RH@tecinf.com",
+                    "FCH_REGISTRO": "30-07-2023",
+                    "SALARIO": 3000000
+                }
+            ]
+        },
+        {
+            "IDENTIFICACION_CONTRATO": "3333434345",
+            "TERCERO": "3333434345",
+            "NOMBRE_TERCERO": "Laura Valentina",
+            "FCH_CONTRATO": "15-03-2025",
+            "AREA": "RH",
+            "NOMBRE_AREA": "Recursos Humanos",
+            "CENTRO_COSTO": "3454",
+            "NOMBRE_CENTRO_COSTO": "Bienestar y Selección",
+            "CARGO_ACTUAL": "Coordinador de Bienestar",
+            "SALARIO_ACTUAL": 2300000,
+            "HISTORICO": [
+                {
+                    "FCH_INICIO": "20-12-2020",
+                    "FCH_FIN": "13-02-2021",
+                    "CARGO": "Coordinador de Bienestar",
+                    "MOTIVO_CAMBIO": "Inicio de contrato",
+                    "TIPO_CAMBIO": "Ingreso",
+                    "MODIFICADO_POR": "RH@tecinf.com",
+                    "FCH_REGISTRO": "20-12-2020",
+                    "SALARIO": 1300000
+                },
+                {
+                    "FCH_INICIO": "13-02-2021",
+                    "FCH_FIN": "30-07-2022",
+                    "CARGO": "Coordinador de Bienestar",
+                    "MOTIVO_CAMBIO": "Ascenso",
+                    "TIPO_CAMBIO": "Ascenso",
+                    "MODIFICADO_POR": "RH@tecinf.com",
+                    "FCH_REGISTRO": "13-02-2022",
+                    "SALARIO": 1900000
+                },
+                {
+                    "FCH_INICIO": "15-03-2025",
+                    "FCH_FIN": "Vigente",
+                    "CARGO": "Coordinador de Bienestar",
+                    "MOTIVO_CAMBIO": "Ascenso",
+                    "TIPO_CAMBIO": "Ascenso",
+                    "MODIFICADO_POR": "RH@tecinf.com",
+                    "FCH_REGISTRO": "30-07-2023",
+                    "SALARIO": 2300000
+                }
+            ]
+        },
+        {
+            "IDENTIFICACION_CONTRATO": "334353536",
+            "TERCERO": "334353536",
+            "NOMBRE_TERCERO": "Sofia Ortiz",
+            "FCH_CONTRATO": "14-02-2024",
+            "AREA": "FIN",
+            "NOMBRE_AREA": "Finanzas",
+            "CENTRO_COSTO": "2442",
+            "NOMBRE_CENTRO_COSTO": "Contabilidad Corporativa",
+            "CARGO_ACTUAL": "Analista Contable",
+            "SALARIO_ACTUAL": 2900000,
+            "HISTORICO": [
+                {
+                    "FCH_INICIO": "20-12-2020",
+                    "FCH_FIN": "13-02-2021",
+                    "CARGO": "Auxiliar Contable",
+                    "MOTIVO_CAMBIO": "Inicio de contrato",
+                    "TIPO_CAMBIO": "Ingreso",
+                    "MODIFICADO_POR": "RH@tecinf.com",
+                    "FCH_REGISTRO": "20-12-2020",
+                    "SALARIO": 1500000
+                },
+                {
+                    "FCH_INICIO": "13-02-2021",
+                    "FCH_FIN": "30-07-2022",
+                    "CARGO": "Asistente Contable",
+                    "MOTIVO_CAMBIO": "Ascenso",
+                    "TIPO_CAMBIO": "Ascenso",
+                    "MODIFICADO_POR": "RH@tecinf.com",
+                    "FCH_REGISTRO": "13-02-2022",
+                    "SALARIO": 2300000
+                },
+                {
+                    "FCH_INICIO": "14-02-2024",
+                    "FCH_FIN": "Vigente",
+                    "CARGO": "Analista Contable",
+                    "MOTIVO_CAMBIO": "Ascenso",
+                    "TIPO_CAMBIO": "Ascenso",
+                    "MODIFICADO_POR": "RH@tecinf.com",
+                    "FCH_REGISTRO": "30-07-2023",
+                    "SALARIO": 2900000
+                }
+            ]
+        },
+        {
+            "IDENTIFICACION_CONTRATO": "4444568679",
+            "TERCERO": "4444568679",
+            "NOMBRE_TERCERO": "Oscar Triana",
+            "FCH_CONTRATO": "23-10-2024",
+            "AREA": "SOP",
+            "NOMBRE_AREA": "Soporte Tecnico",
+            "CENTRO_COSTO": "3533",
+            "NOMBRE_CENTRO_COSTO": "Infraestructura TI",
+            "CARGO_ACTUAL": "Tecnico Soporte",
+            "SALARIO_ACTUAL": 1900000,
+            "HISTORICO": []
+        },
+        {
+            "IDENTIFICACION_CONTRATO": "5556677889",
+            "TERCERO": "5556677889",
+            "NOMBRE_TERCERO": "Daniela Márquez",
+            "FCH_CONTRATO": "01-06-2023",
+            "AREA": "MKT",
+            "NOMBRE_AREA": "Marketing",
+            "CENTRO_COSTO": "3567",
+            "NOMBRE_CENTRO_COSTO": "Publicidad y Medios",
+            "CARGO_ACTUAL": "Especialista SEO",
+            "SALARIO_ACTUAL": 2200000,
+            "HISTORICO": []
+        },
+        {
+            "IDENTIFICACION_CONTRATO": "6667788990",
+            "TERCERO": "6667788990",
+            "NOMBRE_TERCERO": "Andrés Ramírez",
+            "FCH_CONTRATO": "10-09-2024",
+            "AREA": "FIN",
+            "NOMBRE_AREA": "Finanzas",
+            "CENTRO_COSTO": "3444",
+            "NOMBRE_CENTRO_COSTO": "Contabilidad Corporativa",
+            "CARGO_ACTUAL": "Analista Financiero",
+            "SALARIO_ACTUAL": 3100000,
+            "HISTORICO": []
+        },
+        {
+            "IDENTIFICACION_CONTRATO": "7778899001",
+            "TERCERO": "7778899001",
+            "NOMBRE_TERCERO": "Camila Pérez",
+            "FCH_CONTRATO": "05-01-2024",
+            "AREA": "COM",
+            "NOMBRE_AREA": "Comercial",
+            "CENTRO_COSTO": "1007",
+            "NOMBRE_CENTRO_COSTO": "Ventas Internacionales",
+            "CARGO_ACTUAL": "Ejecutiva de Cuentas",
+            "SALARIO_ACTUAL": 3500000,
+            "HISTORICO": []
+        },
+        {
+            "IDENTIFICACION_CONTRATO": "8889900112",
+            "TERCERO": "8889900112",
+            "NOMBRE_TERCERO": "Mauricio López",
+            "FCH_CONTRATO": "20-03-2023",
+            "AREA": "TI",
+            "NOMBRE_AREA": "Dev Software",
+            "CENTRO_COSTO": "1223",
+            "NOMBRE_CENTRO_COSTO": "ERP",
+            "CARGO_ACTUAL": "Ingeniero DevOps",
+            "SALARIO_ACTUAL": 3800000,
+            "HISTORICO": []
+        },
+        {
+            "IDENTIFICACION_CONTRATO": "9990011223",
+            "TERCERO": "9990011223",
+            "NOMBRE_TERCERO": "Natalia Gómez",
+            "FCH_CONTRATO": "15-07-2024",
+            "AREA": "RH",
+            "NOMBRE_AREA": "Recursos Humanos",
+            "CENTRO_COSTO": "1233",
+            "NOMBRE_CENTRO_COSTO": "Bienestar y Selección",
+            "CARGO_ACTUAL": "Analista de Talento Humano",
+            "SALARIO_ACTUAL": 2400000,
+            "HISTORICO": []
+        }
+    ],
+    "TOT_DATOS": 10
+}
+
