@@ -5,7 +5,7 @@ const Funciones = require('../utils/FuncionesApoyo.js');
 async function verificarSiHayChat(peticion) {
     const datos = await Funciones.recolectarDatos(peticion);
     console.log(datos);
-    const {usuarioid1, usuarioid2} = datos;
+    const {esGrupal} = datos;
     const query = 'SELECT chatID FROM participantes WHERE usuarioId IN ($1, $2)GROUP BY chatID HAVING COUNT(DISTINCT usuarioId) = 2';
     const values = [usuarioid1, usuarioid2]; 
     const respuesta = await pool.query(query, values);
